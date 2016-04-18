@@ -8,7 +8,7 @@ The most current version of OpenEaagles can be found at [www.OpenEaagles.org][1]
 
 * We recommend compiling and installing these libraries in your own private library.  This avoids any clashes with system installed files, especially if you intend to use Clang.
 
-* If you plan to use Clang to compile files, make sure to compile the provided libraries with that compiler - and install them into your own local library.  Google Protocol Buffers in particular, has a problem if compiled with Clang and installed in `/usr/local/lib`.  The Clang-compiled version of this library in particular does not play nice with other GCC-compiled versions that might be installed in other places. Doing so might result in a non-working Linux system!
+* If you plan to use Clang to compile files, make sure to compile the provided libraries with that compiler and install them into your own local library.  Google Protocol Buffers in particular, has a problem if compiled with Clang and installed in `/usr/local/lib`.  The Clang-compiled version of this library does not play nice with other GCC-compiled versions that might be installed in other places. Doing so might result in a non-working Linux system!
 
 * To compile code (by default) with Clang, consider adding `export CC=clang` and `export CXX=clang++` to your .bashrc file.
 
