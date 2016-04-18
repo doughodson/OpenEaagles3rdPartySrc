@@ -6,7 +6,7 @@ The most current version of OpenEaagles (OE) can be found at [www.OpenEaagles.or
 
 * This package includes the source code for OE's 3rd party dependency libraries.
 
-* We recommend compiling and installing these libraries in your own location within your user account.  This avoids any potential clashes with system installed files, especially if you intend to use Clang.
+* We recommend compiling and installing these libraries in your own location within your user account.  This avoids any potential clashes with system installed files, especially if you intend to use Clang. The script file `build_libs.sh` will build and install all required libraries to your local library path. Make sure to set your environment variables via `source setenv` in `OpenEaagles` directory.  (Much of what follows in this README is how to do this manually.)
 
 * If you plan to use Clang to compile code, make sure to compile the provided libraries with that compiler and install them into your own account at a specific location.  Google Protocol Buffers in particular, has a problem if compiled with Clang and installed in `/usr/local/lib` (especially if other copies of it exist in your system).  The Clang-compiled version of this library does not play nice with other GCC-compiled versions that might be installed in other places. Doing so might result in a non-working Linux system!
 
