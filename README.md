@@ -6,13 +6,23 @@ The most current version of OpenEaagles (OE) can be found at [www.OpenEaagles.or
 
 * This package includes the source code for OE's 3rd party dependency libraries.
 
-* We recommend compiling and installing these libraries in your own location within your user account.  This avoids any potential clashes with system installed files, especially if you intend to use Clang. The script file `build_libs.sh` will build and install all required libraries to your local library path. Make sure to set your environment variables via `source setenv` in `OpenEaagles` directory.  (Much of what follows in this README is how to do this manually.)
+* We recommend compiling and installing these libraries into your own local directory within your user account.  This avoids any potential clashes with installed system files. The script file `build_libs.sh` will build and install almost all required libraries to your local directory. Make sure to set environment variables via `source setenv` in `OpenEaagles` directory.
 
-* If you plan to use Clang to compile code, make sure to compile the provided libraries with that compiler and install them into your own account at a specific location.  Google Protocol Buffers in particular, has a problem if compiled with Clang and installed in `/usr/local/lib` (especially if other copies of it exist in your system).  The Clang-compiled version of this library does not play nice with other GCC-compiled versions that might be installed in other places. Doing so might result in a non-working Linux system!
+* Make sure to have `autogen`, `automake`, `libtool`, and `libtool-bin` installed.  These are essential prerequisites for `configure` and/or `autogen` scripts to execute properly.
 
-* To use Clang as your default compiler for all projects, consider adding `export CC=clang` and `export CXX=clang++` to your .bashrc (or equivalent) file.
+* If using the `wxWidgets` library, make sure GTK+ 3.0 is installed. For a Ubuntu-based system, use `apt-get install libgit-3-dev`.
 
-* Using `configure` individual libraries to be compiled can be targeted to install to a particular location (i.e., other than `/usr/local`). Use the `--prefix=<path>` argument.
+* If you plan to use the Qt library, download and install the complete Qt package; we make no attempt at bundling Qt as a 3rd party library; it's very large as it includes a complete set of support tools for development.
+
+* If you are going to use the Clang compiler, make sure to compile the provided libraries with that compiler and install them into your own account away from any system directories. Google Protocol Buffers in particular, has a problem if compiled with Clang and installed in `/usr/local/lib` (especially if other copies of it exist in your system).  The Clang-compiled version of this library does not play nice with other GCC-compiled versions that might be installed in other places. Doing so might result in a non-working Linux system!  Keep things clean and simple, keep libraries local.
+
+* If you would like to use Clang as the default compiler for all projects, consider adding `export CC=clang` and `export CXX=clang++` to your .bashrc (or equivalent) file.  All the build tools are smart enough to use the compiler specified by `CC` and `CXX`.
+
+* * *
+
+Here is more explicit step-by-step instructions to build individual libraries.
+
+* Using `configure`, individual libraries can be targeted for installation to a particular directory using the command line argument `--prefix=<path>`.  If this is not specified, the typical default path is `/usr/local`.
 
 As an example, consider the following directory structure:
 
@@ -23,16 +33,16 @@ As an example, consider the following directory structure:
 `/home/me/oe/oe_3rdparty` # desired location of where 3rd party dependencies will be installed  
 `/home/me/oe/OpenEaagles3rdPartySrc` # source code to 3rd party packages  
 
-After unzipping or untarring ccl, jsbsim, zeromq, protobuf, enter each directory and run `configure` as follow:
+After unzipping or untarring ccl, jsbsim, zeromq, protobuf, etc, enter each directory and run `configure` as follows to setup the build system:
 
-`./configure --prefix=/home/me/oe/oe_3rdparty` # for ccl, protobuf and zeromq  
-`./autogen.sh --prefix=home/me/oe/oe_3rdparty --enable-libraries` # for JSBSim and tell it to build a library  
+`./configure --prefix=/home/me/oe/oe_3rdparty` # for most libraries  
+`./autogen.sh --prefix=home/me/oe/oe_3rdparty --enable-libraries` # for JSBSim  
 
-For each library run `configure` (or `autogen.sh` for JSBSim) to setup build environment; then `make` to compile and create libraries; and finally `make install` to copy/install files to location specified.  The example will compile all libraries and install them to `/home/me/oe/oe_3rdparty`.  For the zeromq library; copy the file `zmq.hpp` to `oe_3rdparty/include`.
+Next, use `make` to compile and create libraries, followed by `make install` to copy or install them to the directory specified.  The example will compile all libraries and install them to `/home/me/oe/oe_3rdparty`.  For the zeromq library, manually copy the file `zmq.hpp` to `oe_3rdparty/include`.
 
-* Several dependencies can be installed via `apt-get` or `yum` if Internet access is available. Other libraries, such as cigi and JSBSim are not available in the public repositories.
+* Several dependencies can be installed via `apt-get` or `yum` (e.g., FTGL, FreeType and FreeGlut) if Internet access is available. Other libraries, such as cigi and JSBSim are not available in the public repositories, hence the need this package.
 
-* For the libraries being manually compiled and installed, make sure to use included in this package.  For example, the version of JSBSim included is the one OE is designed to work with.  We do our best to ensure compatibility with a wide range of versions associated with dependencies.
+* For the libraries being manually compiled and installed, make sure to use the ones provided here.  As an example, the version of JSBSim included defines an API that OE is designed to use.  We do our best to ensure compatibility with a wide range of versions but not everything is 100% all the time; to be safe, use the ones provided.
 
 
 [1]: http://www.OpenEaagles.org
