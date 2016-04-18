@@ -16,25 +16,25 @@ The most current version of OpenEaagles can be found at [www.OpenEaagles.org][1]
 
 Consider the following directory structure:
 
-'
+`
 /home/me                           -- my account
 /home/me/oe                        -- the place where framework, examples and my projects are located
 /home/me/oe/OpenEaagles            -- OE framework
 /home/me/oe/OpenEaaglesExamples    -- OE examples
 /home/me/oe/oe_3rdparty            -- OE location where 3rd party dependencies are installed
 /home/me/oe/OpenEaagles3rdPartySrc -- source code to 3rd party packages
-'
+`
 
 After unzipping or untarring ccl, jsbsim, zeromq, protobuf, enter each directory and configure as follow:
 
-'
+`
 ./configure --prefix=/home/me/oe/oe_3rdparty -- for ccl, protobuf and zeromq
 ./autogen.sh --prefix=home/me/oe/oe_3rdparty --enable-libraries for JSBSim
-'
+`
 
-For each library 'configure', then 'make', followed by 'make install'.  This will compile all libraries and install them into oe_3rdparty path.  For zeromq, copy the file 'zmq.hpp' to 'oe_3rdparty/include'.
+For each library `configure`, then `make`, followed by `make install`.  This will compile all libraries and install them into oe_3rdparty path.  For zeromq, copy the file `zmq.hpp` to `oe_3rdparty/include`.
 
-* Many dependencies can be install via “apt-get” or “yum” if Internet access is available.  See OpenEaagles website for detailed instructions.  But others are simply not available, such as the Cigi library and JSBSim.
+* Many dependencies can be install via `apt-get` or `yum` if Internet access is available.  See OpenEaagles website for detailed instructions.  But others are simply not available, such as the Cigi library and JSBSim.
 
 * Make sure to use the version of JSBSim included in this archive when installing on a Linux-based computer.
 
