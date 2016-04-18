@@ -16,19 +16,19 @@ The most current version of OpenEaagles can be found at [www.OpenEaagles.org][1]
 
 Example - consider the following directory structure:
 
-`/home/me        # location of my user account`  
-`/home/me/oe     # the place where framework, examples and my projects are located`  
-`/home/me/oe/OpenEaagles     # OE framework`  
-`/home/me/oe/OpenEaaglesExamples  # OE examples`  
-`/home/me/oe/oe_3rdparty         # OE location where 3rd party dependencies are installed`  
-`/home/me/oe/OpenEaagles3rdPartySrc # source code to 3rd party packages`  
+`/home/me`        # location of my user account  
+`/home/me/oe`    # the place where framework, examples and my projects are located  
+`/home/me/oe/OpenEaagles`     # OE framework  
+`/home/me/oe/OpenEaaglesExamples`  # OE examples  
+`/home/me/oe/oe_3rdparty`         # desired location of where 3rd party dependencies will be installed  
+`/home/me/oe/OpenEaagles3rdPartySrc` # source code to 3rd party packages  
 
 After unzipping or untarring ccl, jsbsim, zeromq, protobuf, enter each directory and configure as follow:
 
-`./configure --prefix=/home/me/oe/oe_3rdparty # for ccl, protobuf and zeromq`  
-`./autogen.sh --prefix=home/me/oe/oe_3rdparty # enable-libraries for JSBSim`
+`./configure --prefix=/home/me/oe/oe_3rdparty` # for ccl, protobuf and zeromq  
+`./autogen.sh --prefix=home/me/oe/oe_3rdparty` # for JSBSim and tell it to build a library  
 
-For each library run `configure` to setup build environment, then `make` to compile and create libraries, followed by `make install` to copy files to location specified.  This should compile all libraries and install them into the `oe_3rdparty` path.  For the zeromq library, copy the file `zmq.hpp` to `oe_3rdparty/include`.
+For each library run `configure` (oe `autogen.sh` for JSBSim) to setup build environment, then `make` to compile and create libraries, followed by `make install` to copy files to location specified.  This should compile all libraries and install them into the `oe_3rdparty` path.  For the zeromq library, copy the file `zmq.hpp` to `oe_3rdparty/include`.
 
 * Several dependencies can be install via `apt-get` or `yum` if Internet access is available. Other libraries, such as Cigi and JSBSim are not available in the repositories.
 
