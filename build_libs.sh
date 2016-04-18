@@ -98,13 +98,13 @@ fi
 rm -rf $OE_3RD_PARTY_ROOT
 mkdir $OE_3RD_PARTY_ROOT
 
-#install_cigi
-#install_jsbsim
-#install_protobuf
-#install_zeromq
-#install_zeromq
-#install_fox
-#install_fltk
+install_cigi
+install_jsbsim
+install_protobuf
+install_zeromq
+install_zeromq
+install_fox
+install_fltk
 install_wxWidgets
 
 
