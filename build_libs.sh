@@ -1,12 +1,19 @@
 #!/bin/bash
 
+# initialize the location to install libraries
+init_install_location()
+{
+  rm -rf $OE_3RD_PARTY_ROOT
+  mkdir $OE_3RD_PARTY_ROOT
+}
+
 # cigi
 install_cigi()
 {
   rm -rf ccl
   tar xzvf ccl_3_3_3a.tar.gz
   cd ccl
-  ./configure --prefix=$OE_3RD_PARTY_ROOT
+  ./configure --prefix=$OE_3RD_PARTY_ROOT --disable-shared
   make
   make install
   cd ..
@@ -30,7 +37,7 @@ install_protobuf()
   rm -rf protobuf-2.6.1
   tar xzvf protobuf-2.6.1.tar.gz
   cd protobuf-2.6.1
-  ./configure --prefix=$OE_3RD_PARTY_ROOT
+  ./configure --prefix=$OE_3RD_PARTY_ROOT --disable-shared
   make
   make install
   cd ..
@@ -52,7 +59,19 @@ install_zeromq()
 }
 
 # FOX GUI
-install_fox()
+install_fox_v1_6()
+{
+  rm -rf fox-1.6.50
+  unzip fox-1.6.50.zip
+  cd fox-1.6.50
+  ./configure --prefix=$OE_3RD_PARTY_ROOT
+  make
+  make install
+  cd ..
+}
+
+# FOX GUI
+install_fox_v1_7()
 {
   rm -rf fox-1.7.54
   tar xzvf fox-1.7.54.tar.gz
@@ -94,17 +113,13 @@ if [ -z "$OE_3RD_PARTY_ROOT" ]; then
    exit 1
 fi
 
-# setup library path
-rm -rf $OE_3RD_PARTY_ROOT
-mkdir $OE_3RD_PARTY_ROOT
-
+init_install_location
 install_cigi
 install_jsbsim
 install_protobuf
 install_zeromq
-install_zeromq
-install_fox
+install_fox_v1_6
+#install_fox_v1_7
 install_fltk
-install_wxWidgets
-
+#install_wxWidgets
 
