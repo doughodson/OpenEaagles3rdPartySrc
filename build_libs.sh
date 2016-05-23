@@ -73,9 +73,9 @@ install_fox_v1_6()
 # FOX GUI
 install_fox_v1_7()
 {
-  rm -rf fox-1.7.54
-  tar xzvf fox-1.7.54.tar.gz
-  cd fox-1.7.54
+  rm -rf fox-1.7.55
+  tar xzvf fox-1.7.55.tar.gz
+  cd fox-1.7.55
   ./configure --prefix=$OE_3RD_PARTY_ROOT
   make
   make install
@@ -119,7 +119,6 @@ install_jsbsim
 install_protobuf
 install_zeromq
 install_fox_v1_6
-#install_fox_v1_7
+install_fox_v1_7
 install_fltk
 #install_wxWidgets
-
