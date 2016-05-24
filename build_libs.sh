@@ -59,18 +59,6 @@ install_zeromq()
 }
 
 # FOX GUI
-install_fox_v1_6()
-{
-  rm -rf fox-1.6.50
-  unzip fox-1.6.50.zip
-  cd fox-1.6.50
-  ./configure --prefix=$OE_3RD_PARTY_ROOT
-  make
-  make install
-  cd ..
-}
-
-# FOX GUI
 install_fox_v1_7()
 {
   rm -rf fox-1.7.55
@@ -83,7 +71,7 @@ install_fox_v1_7()
 }
 
 # FLTK GUI
-install_fltk()
+install_fltk_v1_3()
 {
   rm -rf fltk-1.3.3
   tar xzvf fltk-1.3.3-source.tar.gz
@@ -118,7 +106,7 @@ install_cigi
 install_jsbsim
 install_protobuf
 install_zeromq
-install_fox_v1_6
 install_fox_v1_7
-install_fltk
+install_fltk_v1_3
 #install_wxWidgets
+
