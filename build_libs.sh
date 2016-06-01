@@ -59,8 +59,8 @@ install_zeromq()
 # FOX GUI
 install_fox_v1_7()
 {
-  tar xzvf fox-1.7.55.tar.gz --directory tmp
-  cd tmp/fox-1.7.55
+  tar xzvf fox-1.7.56.tar.gz --directory tmp
+  cd tmp/fox-1.7.56
   ./configure --prefix=$OE_3RD_PARTY_ROOT
   make
   make install
