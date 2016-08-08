@@ -11,17 +11,6 @@ init_install_location()
   mkdir tmp
 }
 
-# ftgl
-install_ftgl()
-{
-  tar xzvf ftgl-2.1.3-rc5.tar.gz --directory tmp
-  cd tmp/ftgl-2.1.3~rc5
-  ./configure --prefix=$OE_3RD_PARTY_ROOT --disable-shared
-  make
-  make install
-  cd ../..
-}
-
 # freetype
 install_freetype()
 {
@@ -33,11 +22,22 @@ install_freetype()
   cd ../..
 }
 
+# ftgl (depends upon freetype)
+install_ftgl()
+{
+  tar xzvf ftgl-2.1.3-rc5.tar.gz --directory tmp
+  cd tmp/ftgl-2.1.3~rc5
+  ./configure --prefix=$OE_3RD_PARTY_ROOT --with-gl-inc=$OE_3RD_PARTY_ROOT/include --with-gl-lib=$OE_3RD_PARTY_ROOT/lib
+  make
+  make install
+  cd ../..
+}
+
 # freeglut
 install_freeglut()
 {
   tar xzvf freeglut-2.8.1.tar.gz --directory tmp
-  cd tmp/freetype-2.8.1
+  cd tmp/freeglut-2.8.1
   ./configure --prefix=$OE_3RD_PARTY_ROOT --disable-shared
   make
   make install
@@ -130,8 +130,8 @@ if [ -z "$OE_3RD_PARTY_ROOT" ]; then
 fi
 
 init_install_location
-#install_ftgl
 #install_freetype
+#install_ftgl
 #install_freeglut
 install_cigi
 install_jsbsim
@@ -140,4 +140,3 @@ install_zeromq
 install_fox_v1_7
 install_fltk_v1_3
 #install_wxWidgets
-
