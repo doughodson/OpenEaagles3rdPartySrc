@@ -89,40 +89,6 @@ install_zeromq()
   cp zeromq/zmq.hpp $OE_3RD_PARTY_ROOT/include
 }
 
-# FOX GUI
-install_fox_v1_7()
-{
-  tar xzvf fox-1.7.56.tar.gz --directory tmp
-  cd tmp/fox-1.7.56
-  ./configure --prefix=$OE_3RD_PARTY_ROOT
-  make
-  make install
-  cd ../..
-}
-
-# FLTK GUI
-install_fltk_v1_3()
-{
-  tar xzvf fltk-1.3.3-source.tar.gz --directory tmp
-  cd tmp/fltk-1.3.3
-  ./configure --prefix=$OE_3RD_PARTY_ROOT
-  make
-  make install
-  cd ../..
-}
-
-# wxWidgets
-install_wxWidgets()
-{
-  bzip2 --keep --decompress wxWidgets-3.1.0.tar.bz2
-  tar xvf wxWidgets-3.1.0.tar --directory tmp
-  cd tmp/wxWidgets-3.1.0
-  ./configure --prefix=$OE_3RD_PARTY_ROOT --disable-shared
-  make
-  make install
-  cd ../..
-}
-
 # check for location to install 3rd party libs
 if [ -z "$OE_3RD_PARTY_ROOT" ]; then
    echo "Need to source setenv from within OpenEaagles"
@@ -137,6 +103,3 @@ install_cigi
 install_jsbsim
 install_protobuf
 install_zeromq
-install_fox_v1_7
-install_fltk_v1_3
-#install_wxWidgets
