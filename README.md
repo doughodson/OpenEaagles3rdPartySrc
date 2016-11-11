@@ -6,11 +6,9 @@ The most current version of OpenEaagles (OE) can be found at [www.OpenEaagles.or
 
 * This package includes the source code for OE's 3rd party dependency libraries.
 
-* We recommend compiling and installing these libraries into a directory within your user account.  This avoids any potential clashes with installed system files. The script file `build_libs.sh` will build and install almost all required libraries to your local directory. Make sure to set environment variables by running `source setenv` within the `OpenEaagles` directory.
+* We recommend compiling and installing these libraries into a directory within your user account.  This avoids potential clashes with installed system files. The script file `build_libs.sh` will build and install almost all required libraries to your local directory. As written it does assume you have installed the developmental versions of freeglut and freetype. Make sure to set environment variables by running `source setenv` within the `OpenEaagles` directory.
 
 * Make sure to have `autogen`, `automake`, `libtool`, and `libtool-bin` installed.  These are essential prerequisites for `configure` and/or `autogen` scripts to execute properly.
-
-* If using the `wxWidgets` library, make sure GTK+ 3.0 is installed. For a Ubuntu-based system, use `apt-get install libgit-3-dev`.
 
 * If you plan to use the Qt library, download and install the complete Qt package; we make no attempt at bundling Qt as a 3rd party library; it's very large as it includes a complete set of support tools for development.
 
