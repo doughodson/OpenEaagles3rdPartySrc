@@ -6,15 +6,15 @@ The most current version of OpenEaagles (OE) can be found at [www.OpenEaagles.or
 
 * This package includes the source code for OE's 3rd party dependency libraries.
 
-* We recommend compiling and installing these libraries into a directory within your user account.  This avoids potential clashes with installed system files. The script file `build_libs.sh` will build and install almost all required libraries to your local directory. As written it does assume you have installed the developmental versions of freeglut and freetype. Make sure to set environment variables by running `source setenv` within the `OpenEaagles` directory.
+* We recommend compiling and installing these libraries into a directory within your user account.  This avoids potential clashes with installed system files. The script file `build_libs.sh` will build and install almost all required libraries to your local directory. As written, it does assume you have installed the developmental versions of `freeglut` and `freetype`. Make sure to set OpenEaagles environment variables by running `source setenv` within the `OpenEaagles` directory.  This defines where the 3rd party libaries will be placed.
 
 * Make sure to have `autogen`, `automake`, `libtool`, and `libtool-bin` installed.  These are essential prerequisites for `configure` and/or `autogen` scripts to execute properly.
 
-* If you plan to use the Qt library, download and install the complete Qt package; we make no attempt at bundling Qt as a 3rd party library; it's very large as it includes a complete set of support tools for development.
+* If you plan to use the Qt library, download and install the complete Qt package; we make no attempt at bundling Qt as a 3rd party library; it's very large as it includes a complete set of support tools for development.  At the time of this writting, we are using Qt 5.7.
 
-* If you are going to use the Clang compiler, make sure to compile the provided libraries with that compiler and install them into a directory within your account; this keeps them away from any system directories. Google Protocol Buffers in particular, has a problem if compiled with Clang and installed in `/usr/local/lib` (especially if other copies of it exist in your system).  The Clang-compiled version of this library does not play nice with other GCC-compiled versions that might be installed in other places. Doing so might result in a non-working Linux system!  Keep things clean and simple, keep libraries local.
+* If you are going to use the Clang compiler, make sure to compile the provided libraries with that compiler and install them into a directory within your account; this keeps them away from any system directories. Google Protocol Buffers in particular, appears present conflicts to other system tools if compiled with Clang and installed in `/usr/local/lib`. The Clang-compiled version of this library does not play nice with other GCC-compiled versions that might be installed in other places. Ignoring this advise might result in a non-working Linux system! To keep things clean and simple, we keep the majority of 3rd party libraries local.
 
-* If you would like to use Clang as the default compiler for all projects, consider adding `export CC=clang` and `export CXX=clang++` to your .bashrc (or equivalent) file.  All the build tools are smart enough to use the compiler specified by `CC` and `CXX`.
+* If you would like to use Clang as the default compiler for all projects, consider adding `export CC=clang` and `export CXX=clang++` to your .bashrc (or equivalent) file.  Almost all build tools are smart enough to use the compiler specified by `CC` and `CXX`.
 
 * * *
 
