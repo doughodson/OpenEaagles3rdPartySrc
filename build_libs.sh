@@ -16,7 +16,7 @@ install_ftgl()
 {
   tar xzvf ftgl-2.1.3-rc5.tar.gz --directory tmp
   cd tmp/ftgl-2.1.3~rc5
-  ./configure --prefix=$OE_3RD_PARTY_ROOT
+  ./configure --prefix=$OE_3RD_PARTY_ROOT --disable-shared
   make
   make install
   cd ../..
