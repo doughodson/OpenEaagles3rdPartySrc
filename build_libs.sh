@@ -14,56 +14,61 @@ init_install_location()
 # ftgl (depends upon freetype)
 install_ftgl()
 {
+  pushd .
   tar xzvf ftgl-2.1.3-rc5.tar.gz --directory tmp
   cd tmp/ftgl-2.1.3~rc5
   ./configure --prefix=$OE_3RD_PARTY_ROOT --disable-shared
   make
   make install
-  cd ../..
+  popd
 }
 
 # cigi
 install_cigi()
 {
+  pushd .
   tar xzvf ccl_3_3_3a.tar.gz --directory tmp
   cd tmp/ccl
   ./configure --prefix=$OE_3RD_PARTY_ROOT --disable-shared
   make
   make install
-  cd ../..
+  popd
 }
 
 # jsbsim
 install_jsbsim()
 {
+  pushd .
   tar xzvf jsbsim_cvs_v2015_0704.tgz --directory tmp
   cd tmp/jsbsim
   ./autogen.sh --prefix=$OE_3RD_PARTY_ROOT --enable-libraries
   make
   make install
-  cd ../..
+  popd
 }
 
 # protobuf
 install_protobuf()
 {
+  pushd .
   tar xzvf protobuf-2.6.1.tar.gz --directory tmp
   cd tmp/protobuf-2.6.1
   ./configure --prefix=$OE_3RD_PARTY_ROOT --disable-shared
   make
   make install
-  cd ../..
+  popd
 }
 
 # zeromq
 install_zeromq()
 {
+  pushd .
   tar xzvf zeromq/zeromq-4.0.3.tar.gz --directory tmp
   cd tmp/zeromq-4.0.3
   ./configure --prefix=$OE_3RD_PARTY_ROOT
   make
   make install
-  cd ../..
+  popd
   cp zeromq/zmq.hpp $OE_3RD_PARTY_ROOT/include
 }
 
