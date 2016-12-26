@@ -72,6 +72,22 @@ install_zeromq()
   cp zeromq/zmq.hpp $OE_3RD_PARTY_ROOT/include
 }
 
+# OpenRTI
+install_hla()
+{
+  pushd .
+  tar -jxvf OpenRTI-0.8.0.tar.bz2 --directory tmp
+  mkdir tmp/openrti-build
+  cd tmp/openrti-build
+  cmake -DCMAKE_INSTALL_PREFIX=$OE_3RD_PARTY_ROOT \
+        -DOPENRTI_ENABLE_PYTHON_BINDINGS:BOOL=OFF \
+        -DOPENRTI_BUILD_SHARED:BOOL=OFF \
+        ../OpenRTI-0.8.0
+  make
+  make install
+  popd
+}
+
 # check for location to install 3rd party libs
 if [ -z "$OE_3RD_PARTY_ROOT" ]; then
    echo "Need to source setenv from within OpenEaagles"
@@ -84,3 +100,5 @@ install_cigi
 install_jsbsim
 install_protobuf
 install_zeromq
+install_hla
+
