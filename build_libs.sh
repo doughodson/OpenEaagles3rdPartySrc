@@ -99,6 +99,32 @@ install_hla()
    fi
 }
 
+# flex
+install_flex()
+{
+   echo 'flex being compiled...' >&2
+   pushd .
+   tar xzvf parser-utils/flex-2.5.39.tar.gz --directory tmp
+   cd tmp/flex-2.5.39
+   ./configure --prefix=$OE_3RD_PARTY_ROOT --disable-shared
+   make
+   make install
+   popd
+}
+
+# bison
+install_bison()
+{
+   echo 'bison being compiled...' >&2
+   pushd .
+   tar xzvf parser-utils/bison-3.0.4.tar.gz --directory tmp
+   cd tmp/bison-3.0.4
+   ./configure --prefix=$OE_3RD_PARTY_ROOT --disable-shared
+   make
+   make install
+   popd
+}
+
 # check for location to install 3rd party libs
 if [ -z "$OE_3RD_PARTY_ROOT" ]; then
    echo "Need to source setenv from within OpenEaagles"
@@ -112,3 +138,8 @@ install_jsbsim
 install_protobuf
 install_zeromq
 install_hla
+install_flex
+install_bison
+
+export PATH=$OE_3RD_PARTY_ROOT/bin:$PATH
+
