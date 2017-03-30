@@ -24,6 +24,27 @@ install_ftgl()
    popd
 }
 
+# freeglut
+# requires XInput.h (libxi-dev to be installed)
+install_freeglut()
+{
+   # check for cmake, needed to compile freeglut lib
+   if [ -x "$(command -v cmake)" ]; then
+      echo 'cmake found, FreeGlut being compiled...' >&2
+      pushd .
+      tar -xvf freeglut-3.0.0.tar.gz --directory tmp
+      mkdir tmp/freeglut-build
+      cd tmp/freeglut-build
+      cmake -DCMAKE_INSTALL_PREFIX=$OE_3RD_PARTY_ROOT \
+            ../freeglut-3.0.0
+      make
+      make install
+      popd
+   else
+      echo 'cmake NOT found, FreeGlut not compiled!' >&2
+   fi
+}
+
 # cigi
 install_cigi()
 {
@@ -132,14 +153,15 @@ if [ -z "$OE_3RD_PARTY_ROOT" ]; then
 fi
 
 init_install_location
+#install_freeglut
 install_ftgl
 install_cigi
 install_jsbsim
 install_protobuf
 install_zeromq
 install_hla
-install_flex
-install_bison
+#install_flex
+#install_bison
 
 export PATH=$OE_3RD_PARTY_ROOT/bin:$PATH
 
