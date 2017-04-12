@@ -159,7 +159,7 @@ install_cigi
 install_jsbsim
 install_protobuf
 install_zeromq
-install_hla
+#install_hla
 #install_flex
 #install_bison
 
