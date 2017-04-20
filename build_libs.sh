@@ -89,8 +89,8 @@ install_zeromq()
 {
    echo 'ZeroMQ being compiled...' >&2
    pushd .
-   tar xzvf zeromq/zeromq-4.2.2.tar.gz --directory tmp
-   cd tmp/zeromq-4.2.2
+   tar xzvf zeromq/zeromq-4.2.1.tar.gz --directory tmp
+   cd tmp/zeromq-4.2.1
    ./configure --prefix=$OE_3RD_PARTY_ROOT
    make
    make install
