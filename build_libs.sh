@@ -104,13 +104,13 @@ install_hla()
    if [ -x "$(command -v cmake)" ]; then
       echo 'cmake found, OpenRTI (HLA) being compiled...' >&2
       pushd .
-      tar -jxvf OpenRTI-0.8.0.tar.bz2 --directory tmp
+      tar -jxvf OpenRTI-0.9.0.tar.bz2 --directory tmp
       mkdir tmp/openrti-build
       cd tmp/openrti-build
       cmake -DCMAKE_INSTALL_PREFIX=$OE_3RD_PARTY_ROOT \
             -DOPENRTI_ENABLE_PYTHON_BINDINGS:BOOL=OFF \
             -DOPENRTI_BUILD_SHARED:BOOL=OFF \
-            ../OpenRTI-0.8.0
+            ../OpenRTI-0.9.0
       make
       make install
       popd
